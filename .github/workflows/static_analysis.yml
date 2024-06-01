@@ -1,7 +1,7 @@
 name: Static analysis
 on:
   pull_request:
-    paths: [".github/workflow/*.yml", ".github/workflow/*.yaml"]
+    paths: [".github/workflows/*.yml", ".github/workflows/*.yaml"]
 defaults:
   run:
     shell: bash
