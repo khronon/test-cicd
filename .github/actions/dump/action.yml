@@ -1,0 +1,26 @@
+name: Dump
+description: |
+  Dump environment variables and github context for log
+  Useful for debugging of workflow...
+inputs:
+  enable-context:
+    default: "true"
+    required: false
+    description: whether output context
+outputs:
+  dumped-date:
+    value: ${{ steps.current.output.date }}
+    description: Date of dumping
+runs:
+  using: composite
+  steps:
+    - run: printenv | sort
+      shell: bash
+    - run: echo "${CONTEXT}"
+      if: ${{ inputs.enable-context == 'true' }}
+      env:
+        CONTEXT: ${{ toJSON(giuthub) }}
+      shell: bash
+    - id: current
+      run: echo "date=$(date)" >> "${GITHUB_OUTPUT}"
+      shell: bash
