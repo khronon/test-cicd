@@ -6,7 +6,7 @@ inputs:
   enable-context:
     default: "true"
     required: false
-    description: whether output context
+    description: whether output context or not
 outputs:
   dumped-date:
     value: ${{ steps.current.output.date }}
